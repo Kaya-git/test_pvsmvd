@@ -10,29 +10,29 @@ from .author_book import author_book_table
 class Author(Base):
     id: Mapped(int) = mapped_column(
         sa.Integer,
-        autoincrement=True
+        autoincrement=True,
     )
     name: Mapped(str) = mapped_column(
         sa.Text,
         unique=False,
-        nullable=False
+        nullable=False,
     )
     second_name: Mapped(str) = mapped_column(
         sa.Text,
         unique=False,
-        nullable=False
+        nullable=False,
     )
     last_name: Mapped(str) = mapped_column(
         sa.Text,
         unique=False,
-        nullable=False
+        nullable=False,
     )
     date_of_birth: Mapped(int) = mapped_column(
         sa.Date,
         unique=False,
-        nullable=False
+        nullable=False,
     )
     books: Mapped(List[Book]) = relationship(
         secondary=author_book_table,
-        back_populates="authors"
+        back_populates="authors",
     )

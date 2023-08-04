@@ -16,22 +16,22 @@ class PublishStatus(enum.IntEnum):
 class Book(Base):
     id: Mapped(int) = mapped_column(
         sa.Integer,
-        autoincrement=True
+        autoincrement=True,
     )
     name: Mapped(str) = mapped_column(
         sa.Text,
         unique=False,
-        nullable=False
+        nullable=False,
     )
     authors: Mapped(List[Author]) = relationship(
         secondary=author_book_table,
-        back_populates="books"
+        back_populates="books",
     )
     number_of_pages: Mapped(int) = mapped_column(
         sa.Integer,
         unique=False,
-        nullable=False
+        nullable=False,
     )
     published: Mapped(PublishStatus) = mapped_column(
-        sa.Enum(PublishStatus)
+        sa.Enum(PublishStatus),
     )
