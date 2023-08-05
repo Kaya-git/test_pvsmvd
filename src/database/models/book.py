@@ -1,11 +1,14 @@
+from typing import TYPE_CHECKING
 from .base import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import List
 import enum
-
-from .author import Author
 from .author_book import author_book_table
+
+if TYPE_CHECKING:
+    from .author import Author
+
 
 
 class PublishStatus(enum.IntEnum):
@@ -23,7 +26,7 @@ class Book(Base):
         unique=False,
         nullable=False,
     )
-    authors: Mapped(List[Author]) = relationship(
+    authors: Mapped(List[Author] | Author) = relationship(
         secondary=author_book_table,
         back_populates="books",
     )

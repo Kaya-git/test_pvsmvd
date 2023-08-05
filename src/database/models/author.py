@@ -1,11 +1,13 @@
+from typing import TYPE_CHECKING
 from .base import Base
 from typing import List
 import sqlalchemy as sa
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from .book import Book
+from datetime import datetime
 from .author_book import author_book_table
 
+if TYPE_CHECKING:
+    from .book import Book
 
 class Author(Base):
     id: Mapped(int) = mapped_column(
@@ -27,7 +29,7 @@ class Author(Base):
         unique=False,
         nullable=False,
     )
-    date_of_birth: Mapped(int) = mapped_column(
+    date_of_birth: Mapped(datetime) = mapped_column(
         sa.Date,
         unique=False,
         nullable=False,

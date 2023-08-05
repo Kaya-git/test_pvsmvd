@@ -19,7 +19,7 @@ class AuthorRepo(Repository[Author]):
         name: str,
         second_name: str,
         last_name: str,
-        date_of_birth: int,
+        date_of_birth: datetime,
         books: Optional[List[Book]] | Book,
     ) -> None:
         """
@@ -37,11 +37,9 @@ class AuthorRepo(Repository[Author]):
                 second_name=second_name,
                 last_name=last_name,
                 date_of_birth=date_of_birth,
-                books=books
             )
         )
         return new_author
-    
 
     async def patch(
         self,
@@ -50,7 +48,6 @@ class AuthorRepo(Repository[Author]):
         second_name: str,
         last_name: str,
         date_of_birth: datetime,
-        books: Optional[List[Book]] | Book,
     ) -> None:
         """
         Update method for certain raw.
@@ -59,7 +56,6 @@ class AuthorRepo(Repository[Author]):
         :second_name: Author second name
         :last_name: Author last name
         :date_of_birth: Author date of birth
-        :books: Author book or books
         """
         statement = (
             update(self.type_model)
@@ -69,7 +65,6 @@ class AuthorRepo(Repository[Author]):
                 second_name=second_name,
                 last_name=last_name,
                 date_of_birth=date_of_birth,
-                books=books,
                 )
         )
         return (await self.session.execute(statement))

@@ -11,10 +11,11 @@ load_dotenv()
 class DatabaseConfig:
     database_system: str = "sqlite"
     driver: str = "pysqlite"
-    
+    host:str = "localhost"
     def build_conn_str(self) -> str:
         return URL.create(
-            drivername=f"{self.database_system}+{self.driver}"
+            drivername=f"{self.database_system}+{self.driver}",
+            host=self.host
         ).render_as_string()
 
 @dataclass

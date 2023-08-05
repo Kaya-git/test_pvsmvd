@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 from config import conf
-from database import create_async_engine
+from author import author_router
 
 app = FastAPI(
     title="PVSMD Test")
 
-
-engine = create_async_engine(conf.db.build_conn_str())
+app.include_router(author_router)
 
 
 if __name__ =="__main__":

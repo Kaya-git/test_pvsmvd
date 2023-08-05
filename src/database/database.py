@@ -6,8 +6,7 @@ from sqlalchemy.ext.asyncio import create_async_engine as _create_async_engine
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from config import conf
-# from database.reposiroties.user import UserRepo
-# from database.reposiroties.user_banking import UserBankingRepo
+from database.repositories import AuthorRepo, BookRepo, GenreRepo
 
 
 def create_async_engine(url: Union[URL, str]) -> AsyncEngine:

@@ -4,7 +4,8 @@ from typing import Generic, List, Type, TypeVar
 
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from fastapi import Depends
+from database.database import create_session_maker
 from database.models.base import Base
 
 AbstractModel = TypeVar("AbstractModel")
@@ -14,7 +15,7 @@ class Repository(Generic[AbstractModel]):
     """Repository abstract class"""
 
     type_model: Type[Base]
-    session: AsyncSession
+    session: AsyncSession = Depends(create_session_maker())
 
     def __init__(self, type_model: Type[Base], session: AsyncSession):
         """
@@ -53,6 +54,7 @@ class Repository(Generic[AbstractModel]):
         :return: Nothing
         """
         ...
+
 
     @abc.abstractclassmethod
     async def patch(self, *args, **kwargs) -> None:
