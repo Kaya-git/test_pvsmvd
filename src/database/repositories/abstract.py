@@ -2,7 +2,7 @@
 import abc
 from typing import Generic, List, Type, TypeVar
 
-from sqlalchemy import delete, select, update
+from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from database.models.base import Base
