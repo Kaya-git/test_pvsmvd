@@ -36,7 +36,7 @@ class GenreRepo(Repository[Genre]):
         self,
         whereclause,
         name: str,
-        books: List[Book] | Book, 
+        books: List[Book] | Book,
     ) -> None:
         """
         Update method for certain raw.
