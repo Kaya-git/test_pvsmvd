@@ -15,7 +15,7 @@ async def get_author(
     id: int | str,
 ):
     await db.author.get_by_id(
-        id==id
+        id == id
     )
 
 
@@ -29,7 +29,7 @@ async def new(
     name: str,
     second_name: str,
     last_name: str,
-    date_of_birth: datetime, 
+    date_of_birth: datetime,
 ):
     await db.author.post(
         name=name,
@@ -42,28 +42,27 @@ async def new(
 
 @author_router.patch("")
 async def update(
-    ident: int,
+    id: int,
     name: str,
     second_name: str,
     last_name: str,
     date_of_birth: datetime
 ):
-        await db.author.patch(
-            whereclause=(Author.id==ident),
-            name=name,
-            second_name=second_name,
-            last_name=last_name,
-            date_of_birth=date_of_birth
-        )
-        await db.session.commit()
+    await db.author.patch(
+        whereclause=(Author.id == id),
+        name=name,
+        second_name=second_name,
+        last_name=last_name,
+        date_of_birth=date_of_birth
+    )
+    await db.session.commit()
 
 
 @author_router.delete("")
 async def delete(
-    ident: int
+    id: int
 ):
-        await db.author.delete(
-            whereclause=(Author.id == ident)
-        )
-        await db.session.commit()
-    
+    await db.author.delete(
+        whereclause=(Author.id == id)
+    )
+    await db.session.commit()

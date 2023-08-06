@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import date
 
+
 class AuthorCreate(BaseModel):
     name: str
     second_name: str
