@@ -1,7 +1,7 @@
 """Genre repository file."""
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import update
-from database.models import Genre, Book
+from db.models import Genre, Book
 from .abstract import Repository
 from typing import Optional, List
 

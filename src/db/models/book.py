@@ -17,24 +17,27 @@ class PublishStatus(enum.IntEnum):
 
 
 class Book(Base):
-    id: Mapped(int) = mapped_column(
+    __tablename__ = "book"
+    
+    id: Mapped[int] = mapped_column(
         sa.Integer,
         autoincrement=True,
+        primary_key=True,
     )
-    name: Mapped(str) = mapped_column(
+    name: Mapped[str] = mapped_column(
         sa.Text,
         unique=False,
         nullable=False,
     )
-    authors: Mapped(List[Author] | Author) = relationship(
+    authors: Mapped[List["Author"] | "Author"] = relationship(
         secondary=author_book_table,
         back_populates="books",
     )
-    number_of_pages: Mapped(int) = mapped_column(
+    number_of_pages: Mapped[int] = mapped_column(
         sa.Integer,
         unique=False,
         nullable=False,
     )
-    published: Mapped(PublishStatus) = mapped_column(
+    published: Mapped[PublishStatus] = mapped_column(
         sa.Enum(PublishStatus),
     )

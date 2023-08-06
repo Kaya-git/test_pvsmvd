@@ -10,12 +10,10 @@ load_dotenv()
 @dataclass
 class DatabaseConfig:
     database_system: str = "sqlite"
-    driver: str = "pysqlite"
-    host:str = "localhost"
+    driver: str = "asyncpg"
     def build_conn_str(self) -> str:
         return URL.create(
             drivername=f"{self.database_system}+{self.driver}",
-            host=self.host
         ).render_as_string()
 
 @dataclass

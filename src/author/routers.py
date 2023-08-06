@@ -1,7 +1,5 @@
 from fastapi import APIRouter
-from database import create_session_maker, Author
-from fastapi import Depends
-from sqlalchemy.ext.asyncio import AsyncSession
+from db import Author
 from database import Database as db
 from datetime import datetime
 

@@ -1,12 +1,12 @@
 from typing import Union
 
-
+from fastapi import Depends
 from sqlalchemy.engine import URL
 from sqlalchemy.ext.asyncio import create_async_engine as _create_async_engine
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from config import conf
-from database.repositories import AuthorRepo, BookRepo, GenreRepo
+from db.repositories import AuthorRepo, BookRepo, GenreRepo
 
 
 def create_async_engine(url: Union[URL, str]) -> AsyncEngine:
@@ -50,7 +50,7 @@ class Database:
     
     def __init__(
         self,
-        session: AsyncSession,
+        session: AsyncSession  = Depends(create_session_maker()),
         author: AuthorRepo = None,
         book: BookRepo = None,
         genre: GenreRepo = None,

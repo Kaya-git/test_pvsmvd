@@ -10,31 +10,34 @@ if TYPE_CHECKING:
     from .book import Book
 
 class Author(Base):
-    id: Mapped(int) = mapped_column(
+    __tablename__ = "author"
+    
+    id: Mapped[int]= mapped_column(
         sa.Integer,
         autoincrement=True,
+        primary_key=True
     )
-    name: Mapped(str) = mapped_column(
+    name: Mapped[str] = mapped_column(
         sa.Text,
         unique=False,
         nullable=False,
     )
-    second_name: Mapped(str) = mapped_column(
+    second_name: Mapped[str] = mapped_column(
         sa.Text,
         unique=False,
         nullable=False,
     )
-    last_name: Mapped(str) = mapped_column(
+    last_name: Mapped[str] = mapped_column(
         sa.Text,
         unique=False,
         nullable=False,
     )
-    date_of_birth: Mapped(datetime) = mapped_column(
+    date_of_birth: Mapped[datetime] = mapped_column(
         sa.Date,
         unique=False,
         nullable=False,
     )
-    books: Mapped(List[Book]) = relationship(
+    books: Mapped[List["Book"]] = relationship(
         secondary=author_book_table,
         back_populates="authors",
     )

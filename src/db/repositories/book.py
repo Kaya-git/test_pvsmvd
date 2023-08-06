@@ -1,7 +1,7 @@
 """Book repository file."""
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import update
-from database.models import Author, Book, PublishStatus
+from db.models import Author, Book, PublishStatus
 from .abstract import Repository
 from typing import Optional, List
 from datetime import datetime
