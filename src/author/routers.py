@@ -12,10 +12,10 @@ author_router = APIRouter(
 
 @author_router.get("/{ident}")
 async def get_author(
-    ident: int | str,
+    id: int | str,
 ):
     await db.author.get_by_id(
-        ident=ident
+        ident=id
     )
 
 
