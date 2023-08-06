@@ -3,16 +3,17 @@ from .base import Base
 from typing import List
 import sqlalchemy as sa
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from datetime import datetime
+from datetime import date
 from .author_book import author_book_table
 
 if TYPE_CHECKING:
     from .book import Book
 
+
 class Author(Base):
     __tablename__ = "author"
-    
-    id: Mapped[int]= mapped_column(
+
+    id: Mapped[int] = mapped_column(
         sa.Integer,
         autoincrement=True,
         primary_key=True
@@ -32,7 +33,7 @@ class Author(Base):
         unique=False,
         nullable=False,
     )
-    date_of_birth: Mapped[datetime] = mapped_column(
+    date_of_birth: Mapped[date] = mapped_column(
         sa.Date,
         unique=False,
         nullable=False,
@@ -40,4 +41,5 @@ class Author(Base):
     books: Mapped[List["Book"]] = relationship(
         secondary=author_book_table,
         back_populates="authors",
+        cascade="all, delete",
     )

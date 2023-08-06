@@ -8,8 +8,7 @@ app = FastAPI(
 app.include_router(author_router)
 
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     import uvicorn
-    
-    
-    uvicorn.run("main:app", log_level=conf.logging_level)
+
+    uvicorn.run("main:app", reload=True, log_level=conf.logging_level)

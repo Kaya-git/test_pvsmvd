@@ -3,8 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import update
 from db.models import Genre, Book
 from .abstract import Repository
-from typing import Optional, List
-
+from typing import List
 
 
 class GenreRepo(Repository[Genre]):
@@ -13,7 +12,6 @@ class GenreRepo(Repository[Genre]):
     def __init__(self, session: AsyncSession):
         """Initialize chat repository as for all chats or only for one chat."""
         super().__init__(type_model=Genre, session=session)
-
 
     async def post(
         self,
@@ -33,7 +31,6 @@ class GenreRepo(Repository[Genre]):
             )
         )
         return new_genre
-
 
     async def patch(
         self,

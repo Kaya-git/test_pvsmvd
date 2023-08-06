@@ -11,18 +11,20 @@ load_dotenv()
 class DatabaseConfig:
     database_system: str = "sqlite"
     driver: str = "aiosqlite"
+
     def build_conn_str(self) -> str:
         # return URL.create(
         #     drivername=f"{self.database_system}+{self.driver}",
         # ).render_as_string()
         return "sqlite+aiosqlite:///database.db"
-        
+
 
 @dataclass
 class Configuration:
     debug = bool(os.environ.get("DEBUG"))
     logging_level = int(os.environ.get("LOGGING_LEVEL"))
-    
+
     db = DatabaseConfig()
+
 
 conf = Configuration()

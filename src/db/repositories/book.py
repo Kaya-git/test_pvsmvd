@@ -4,7 +4,6 @@ from sqlalchemy import update
 from db.models import Author, Book, PublishStatus
 from .abstract import Repository
 from typing import Optional, List
-from datetime import datetime
 
 
 class BookRepo(Repository[Author]):
@@ -13,7 +12,6 @@ class BookRepo(Repository[Author]):
     def __init__(self, session: AsyncSession):
         """Initialize chat repository as for all chats or only for one chat."""
         super().__init__(type_model=Book, session=session)
-
 
     async def post(
         self,
@@ -39,7 +37,6 @@ class BookRepo(Repository[Author]):
             )
         )
         return new_book
-
 
     async def patch(
         self,
@@ -68,4 +65,3 @@ class BookRepo(Repository[Author]):
             )
         )
         return (await self.session.execute(statement))
-        

@@ -1,6 +1,6 @@
 """ Repository file """
 import abc
-from typing import Generic, List, Type, TypeVar
+from typing import Generic, Type, TypeVar
 
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -24,15 +24,13 @@ class Repository(Generic[AbstractModel]):
         self.type_model = type_model
         self.session = session
 
-
-    async def get_by_id(self, ident: int | str) -> AbstractModel:
+    async def get_by_id(self, id: int) -> AbstractModel:
         """
         Get an ONE model from the database with PK
         :param ident: Key which need to find entry in database
         :return:
         """
-        return await self.session.get(entity=self.type_model, ident=ident)
-
+        return await self.session.get(entity=self.type_model, ident=id)
 
     async def get_all(self) -> AbstractModel:
         """
@@ -40,9 +38,8 @@ class Repository(Generic[AbstractModel]):
         :return:
         """
         statement = select(self.type_model)
-        
-        return self.session.scalars(statement)
 
+        return self.session.execute(statement)
 
     @abc.abstractmethod
     async def post(self, *args, **kwargs) -> None:
@@ -53,7 +50,6 @@ class Repository(Generic[AbstractModel]):
         """
         ...
 
-
     @abc.abstractclassmethod
     async def patch(self, *args, **kwargs) -> None:
         """
@@ -62,7 +58,6 @@ class Repository(Generic[AbstractModel]):
         :return: Nothing
         """
         ...
-
 
     async def delete(self, whereclause) -> None:
         """

@@ -10,7 +10,6 @@ if TYPE_CHECKING:
     from .author import Author
 
 
-
 class PublishStatus(enum.IntEnum):
     No = 0
     Yes = 1
@@ -18,7 +17,7 @@ class PublishStatus(enum.IntEnum):
 
 class Book(Base):
     __tablename__ = "book"
-    
+
     id: Mapped[int] = mapped_column(
         sa.Integer,
         autoincrement=True,

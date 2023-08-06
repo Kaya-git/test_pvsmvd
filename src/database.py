@@ -31,31 +31,32 @@ def create_session_maker(engine: AsyncEngine = None) -> sessionmaker:
         expire_on_commit=False
     )
 
+
 class Database:
     """
     Database class is the highest abstraction level of database
     and can be used in the handlers or any other bot-side functions
     """
-    
+
     author: AuthorRepo
     """ Author repository """
-    
+
     book: BookRepo
     """ Book repository """
-    
+
     genre: GenreRepo
     """ Genre repository """
-    
+
     session: AsyncSession
-    
+
     def __init__(
         self,
-        session: AsyncSession  = Depends(create_session_maker()),
+        session: AsyncSession = Depends(create_session_maker()),
         author: AuthorRepo = None,
         book: BookRepo = None,
         genre: GenreRepo = None,
-        ) -> None:
-        
+    ) -> None:
+
         self.session = session
         self.author = author or AuthorRepo(session=session)
         self.book = book or BookRepo(session=session)

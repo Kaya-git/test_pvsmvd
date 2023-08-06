@@ -10,12 +10,12 @@ author_router = APIRouter(
 )
 
 
-@author_router.get("/{ident}")
+@author_router.get("/{id}")
 async def get_author(
     id: int | str,
 ):
     await db.author.get_by_id(
-        ident=id
+        id==id
     )
 
 
@@ -39,6 +39,7 @@ async def new(
     )
     await db.session.commit()
 
+
 @author_router.patch("")
 async def update(
     ident: int,
@@ -47,7 +48,6 @@ async def update(
     last_name: str,
     date_of_birth: datetime
 ):
-    try:
         await db.author.patch(
             whereclause=(Author.id==ident),
             name=name,
@@ -56,20 +56,14 @@ async def update(
             date_of_birth=date_of_birth
         )
         await db.session.commit()
-    except:
-        raise SyntaxError
-    
 
 
 @author_router.delete("")
 async def delete(
     ident: int
 ):
-    try:
         await db.author.delete(
             whereclause=(Author.id == ident)
         )
         await db.session.commit()
-    except:
-        raise SyntaxError
     

@@ -68,4 +68,3 @@ class AuthorRepo(Repository[Author]):
                 )
         )
         return (await self.session.execute(statement))
-        

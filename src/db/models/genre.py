@@ -1,9 +1,7 @@
-from typing import TYPE_CHECKING
 from .base import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import Mapped, mapped_column
 from .book import Book
-
 
 
 class Genre(Base):

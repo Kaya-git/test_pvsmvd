@@ -1,6 +1,7 @@
 from sqlalchemy import Table, Column, ForeignKey
 from .base import Base
 
+
 author_book_table = Table(
     "author_book",
     Base.metadata,
