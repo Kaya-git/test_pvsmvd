@@ -1,7 +1,5 @@
 # test_pvsmvd
-<<<<<<< HEAD
-Реализовать RESTful-сервис на Python с использованием FastAPI, SQLAlchemy, Alembic.
-<<<<<<< HEAD
+Реализовать RESTful-сервис на Python с использованием FastAPI, SQLAlchemy, Alembic
 
 Для реализации необходимо использовать следующие сущности: Author, Book, Genre.
 
@@ -13,8 +11,4 @@
 
 Реализовать CRUD-методы: GET_BY_ID, GET_ALL, POST, PATCH, DELETE.
 
-Необходима реализация Docker-файла для запуска приложения.
-
-Для хранения данных использовать SQLite.
-=======
->>>>>>> 296ee96eb973d7e8d644aacc525210fde37be4af
+Необходима реализация Docker-файла для запуска приложения
