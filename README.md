@@ -1,4 +1,5 @@
 # test_pvsmvd
+<<<<<<< HEAD
 Реализовать RESTful-сервис на Python с использованием FastAPI, SQLAlchemy, Alembic.
 <<<<<<< HEAD
 
@@ -15,3 +16,5 @@
 Необходима реализация Docker-файла для запуска приложения.
 
 Для хранения данных использовать SQLite.
+=======
+>>>>>>> 296ee96eb973d7e8d644aacc525210fde37be4af
