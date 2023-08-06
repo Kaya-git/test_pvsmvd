@@ -12,4 +12,4 @@ if __name__ =="__main__":
     import uvicorn
     
     
-    uvicorn.run("main.py", log_level=conf.logging_level)
+    uvicorn.run("main:app", log_level=conf.logging_level)
