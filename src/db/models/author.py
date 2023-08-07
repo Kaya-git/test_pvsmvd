@@ -41,5 +41,6 @@ class Author(Base):
     books: Mapped[List["Book"]] = relationship(
         secondary=author_book_table,
         back_populates="authors",
+        default=None,
         cascade="all, delete",
     )
